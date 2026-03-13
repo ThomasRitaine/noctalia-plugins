@@ -63,3 +63,22 @@ qs -c noctalia-shell ipc call plugin:usb-drive-manager unmountAll
 - Disk usage is updated ~1 second after device enumeration
 - udevadm events are debounced (800ms) to avoid rapid re-queries during partition table reads
 
+## Tested & Limitations
+
+### Tested filesystems
+
+- `ext4`
+- `btrfs`
+- `vfat` / `fat32`
+- `ntfs` via kernel `ntfs3` driver
+
+For NTFS volumes:
+
+- A working NTFS implementation is required (e.g. `CONFIG_NTFS3_FS` in the kernel, optionally `ntfs3g`).
+- Volumes must be **cleanly unmounted** by Windows. If the NTFS volume is marked dirty or hibernated (Fast Startup / Sleep), `ntfs3` refuses to mount it and `udisksctl` will fail with a "wrong fs type / volume is dirty" error. The plugin intentionally does **not** force-mount such volumes; run `chkdsk` on Windows and disable Fast Startup instead.
+
+### Not implemented (yet)
+
+- No built-in LUKS / encrypted volume unlock flow (encrypted devices that are unlocked externally and show up in `lsblk` behave like normal mounted devices).
+- No special handling for network filesystems or non-UDisks-managed devices.
+
