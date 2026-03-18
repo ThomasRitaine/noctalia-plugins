@@ -162,7 +162,7 @@ PanelWindow {
                 inputItem.echoMode: (flow && !flow.responseVisible) ? TextInput.Password : TextInput.Normal
                 visible: flow && flow.isResponseRequired
                 
-                onEditingFinished: {
+                onAccepted: {
                     if (flow) {
                         flow.submit(passwordInput.text)
                         passwordInput.text = ""
