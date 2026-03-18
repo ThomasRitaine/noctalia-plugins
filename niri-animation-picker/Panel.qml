@@ -96,12 +96,12 @@ Item {
             if (exitCode === 0) {
                 root.activeFile = root.pendingFile
                 root.statusIsError = false
-                root.statusMessage = pluginApi?.tr("panel.applied", { file: root.pendingFile }) || `Applied: ${root.pendingFile}`
-                ToastService.showNotice(pluginApi?.tr("panel.animationSet", { file: root.pendingFile }) || `Animation set to ${root.pendingFile}`)
+                root.statusMessage = pluginApi?.tr("panel.applied", { file: root.pendingFile })
+                ToastService.showNotice(pluginApi?.tr("panel.animationSet", { file: root.pendingFile }))
             } else {
                 root.statusIsError = true
-                root.statusMessage = pluginApi?.tr("panel.writeFailed", { code: exitCode }) || `Write failed (exit ${exitCode})`
-                ToastService.showError(pluginApi?.tr("panel.writeFailedToast") || "Failed to write to target file")
+                root.statusMessage = pluginApi?.tr("panel.writeFailed", { code: exitCode })
+                ToastService.showError(pluginApi?.tr("panel.writeFailedToast"))
             }
         }
     }
@@ -146,16 +146,16 @@ Item {
                     Layout.fillWidth: true
                     spacing: 2
                     NText {
-                        text: pluginApi?.tr("panel.title") || "Niri Animation Preset"
+                        text: pluginApi?.tr("panel.title")
                         pointSize: Style.fontSizeL; font.weight: Font.Bold; color: Color.mOnSurface
                         Layout.fillWidth: true
                     }
                     NText {
                         text: root.loading
-                            ? (pluginApi?.tr("panel.scanning") || "Scanning…")
+                            ? (pluginApi?.tr("panel.scanning"))
                             : root.kdlFiles.length > 0
-                                ? (pluginApi?.tr("panel.presetsAvailable", { count: root.kdlFiles.length }) || `${root.kdlFiles.length} presets available`)
-                                : (pluginApi?.tr("panel.noPresetsFound") || "No presets found")
+                                ? (pluginApi?.tr("panel.presetsAvailable", { count: root.kdlFiles.length }))
+                                : (pluginApi?.tr("panel.noPresetsFound"))
                         pointSize: Style.fontSizeXS; color: Color.mOnSurfaceVariant
                     }
                 }
@@ -239,7 +239,7 @@ Item {
                     spacing: Style.marginM
                     NIcon { icon: "loader"; color: Color.mPrimary; pointSize: Style.fontSizeXXL; Layout.alignment: Qt.AlignHCenter }
                     NText {
-                        text: pluginApi?.tr("panel.scanningAnimations") || "Scanning animations…"
+                        text: pluginApi?.tr("panel.scanningAnimations")
                         color: Color.mOnSurfaceVariant; pointSize: Style.fontSizeM; Layout.alignment: Qt.AlignHCenter
                     }
                 }
@@ -251,7 +251,7 @@ Item {
                     spacing: Style.marginM
                     NIcon { icon: "folder-open"; color: Color.mOnSurfaceVariant; pointSize: Style.fontSizeXXL; Layout.alignment: Qt.AlignHCenter }
                     NText {
-                        text: pluginApi?.tr("panel.noFilesFound") || "No .kdl files found"
+                        text: pluginApi?.tr("panel.noFilesFound")
                         color: Color.mOnSurfaceVariant; pointSize: Style.fontSizeM
                         horizontalAlignment: Text.AlignHCenter; Layout.alignment: Qt.AlignHCenter
                     }

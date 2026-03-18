@@ -21,7 +21,7 @@ NIconButton {
     readonly property bool hasCustomColor: iconColorKey !== "none"
 
     icon: "sparkles"
-    tooltipText: pluginApi?.tr("widget.tooltip") || "Pick a niri animation preset"
+    tooltipText: pluginApi?.tr("widget.tooltip")
     tooltipDirection: BarService.getTooltipDirection(screen?.name)
     baseSize: Style.getCapsuleHeightForScreen(screen?.name)
     customRadius: Style.radiusL

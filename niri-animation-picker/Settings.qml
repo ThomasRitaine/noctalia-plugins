@@ -26,8 +26,8 @@ ColumnLayout {
             spacing: Style.marginS
 
             NLabel {
-                label: pluginApi?.tr("settings.animationsFolder.label") || "Animations folder"
-                description: pluginApi?.tr("settings.animationsFolder.description") || "Folder containing your .kdl preset files"
+                label: pluginApi?.tr("settings.animationsFolder.label")
+                description: pluginApi?.tr("settings.animationsFolder.description")
             }
 
             RowLayout {
@@ -43,14 +43,14 @@ ColumnLayout {
                 }
 
                 NButton {
-                    text: pluginApi?.tr("settings.browse") || "Browse…"
+                    text: pluginApi?.tr("settings.browse")
                     onClicked: animFolderPicker.openFilePicker()
                 }
             }
 
             NFilePicker {
                 id: animFolderPicker
-                title: pluginApi?.tr("settings.animationsFolder.pickerTitle") || "Select animations folder"
+                title: pluginApi?.tr("settings.animationsFolder.pickerTitle")
                 initialPath: root.valueAnimationsFolder
                 selectionMode: "folders"
                 onAccepted: paths => {
@@ -64,8 +64,8 @@ ColumnLayout {
         // Target KDL file — plain text input since the file may not exist yet
         NTextInput {
             Layout.fillWidth: true
-            label: pluginApi?.tr("settings.targetFile.label") || "Target KDL file"
-            description: pluginApi?.tr("settings.targetFile.description") || "File where the include line will be written"
+            label: pluginApi?.tr("settings.targetFile.label")
+            description: pluginApi?.tr("settings.targetFile.description")
             placeholderText: "~/.config/niri/animations.kdl"
             text: root.valueTargetFile
             onTextChanged: root.valueTargetFile = text
@@ -73,8 +73,8 @@ ColumnLayout {
 
         // Icon color
         NColorChoice {
-            label: pluginApi?.tr("settings.iconColor.label") || "Icon color"
-            description: pluginApi?.tr("settings.iconColor.description") || "Color of the bar widget icon"
+            label: pluginApi?.tr("settings.iconColor.label")
+            description: pluginApi?.tr("settings.iconColor.description")
             currentKey: root.valueIconColor
             onSelected: key => root.valueIconColor = key
         }
