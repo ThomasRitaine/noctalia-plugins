@@ -19,7 +19,7 @@
     {
       "id": "assistant-panel",
       "name": "Assistant Panel",
-      "version": "2.1.3",
+      "version": "2.1.4",
       "official": false,
       "author": "j-1in",
       "description": "AI Chat and Translation panel",
@@ -33,7 +33,7 @@
         "Productivity",
         "Network"
       ],
-      "lastUpdated": "2026-02-05T21:36:32+11:00"
+      "lastUpdated": "2026-03-18T17:51:21+01:00"
     },
     {
       "id": "asus_um5606_fan_state",
@@ -119,7 +119,7 @@
     {
       "id": "clipper",
       "name": "Clipper",
-      "version": "2.1.0",
+      "version": "2.2.3",
       "official": false,
       "author": "blackbartblues",
       "description": "Advanced clipboard manager with history, search, keyboard navigation, ToDo integration, pinned items, notecards/sticky notes, and selection-to-notecard feature. Fully translated with comprehensive i18n support.",
@@ -131,7 +131,7 @@
         "Bar",
         "Panel"
       ],
-      "lastUpdated": "2026-02-23T20:48:07-05:00"
+      "lastUpdated": "2026-03-16T14:00:58+07:00"
     },
     {
       "id": "coin-flip",
@@ -309,7 +309,7 @@
     {
       "id": "hot-corners",
       "name": "Hot Corners",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "official": false,
       "author": "sapjax",
       "description": "A macOS-style hot corners plugin for Noctalia Shell.",
@@ -320,7 +320,7 @@
         "Desktop",
         "Productivity"
       ],
-      "lastUpdated": "2026-03-02T19:41:26+08:00"
+      "lastUpdated": "2026-03-18T17:51:21+01:00"
     },
     {
       "id": "hyprland-steam-overlay",
@@ -515,7 +515,7 @@
     {
       "id": "mpris-lyric",
       "name": "MPRIS Lyric",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "official": false,
       "author": "DBeidachazi",
       "description": "Display synchronized lyrics from MPRIS-compatible music players (e.g., go-musicfox) in the bar.",
@@ -526,7 +526,7 @@
         "Bar",
         "Music"
       ],
-      "lastUpdated": "2026-02-23T20:48:07-05:00"
+      "lastUpdated": "2026-03-18T09:37:17+08:00"
     },
     {
       "id": "mpvpaper",
@@ -600,7 +600,7 @@
     {
       "id": "news",
       "name": "News Bar",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "official": false,
       "author": "LazarH",
       "description": "Display scrolling news headlines from various sources using NewsAPI.org",
@@ -613,7 +613,7 @@
         "Network",
         "Fun"
       ],
-      "lastUpdated": "2026-02-22T10:29:46+02:00"
+      "lastUpdated": "2026-03-18T17:51:21+01:00"
     },
     {
       "id": "niri-auto-tile",
@@ -699,6 +699,24 @@
       "lastUpdated": "2026-03-05T13:10:48+10:00"
     },
     {
+      "id": "obs-control",
+      "name": "OBS Control",
+      "version": "0.1.0",
+      "official": false,
+      "author": "ayagmar",
+      "description": "OBS recording, replay, and stream status widget for Noctalia.",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "3.6.0",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Panel",
+        "Indicator",
+        "Utility"
+      ],
+      "lastUpdated": "2026-03-18T19:24:12Z"
+    },
+    {
       "id": "openhue",
       "name": "Openhue widget",
       "version": "1.0.1",
@@ -715,9 +733,24 @@
       "lastUpdated": "2026-01-26T23:59:29-05:00"
     },
     {
+      "id": "parallax-wallpaper",
+      "name": "Parallax Wallpaper",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Qholin",
+      "description": "A customizable parallax effect for the wallpaper based on the active workspace.",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "4.4.0",
+      "license": "MIT",
+      "tags": [
+        "Desktop"
+      ],
+      "lastUpdated": "2026-03-12T22:34:41+03:00"
+    },
+    {
       "id": "polkit-agent",
       "name": "Polkit Agent",
-      "version": "1.0.2",
+      "version": "1.0.5",
       "official": true,
       "author": "Noctalia Team <team@noctalia.dev>",
       "description": "Provides a Polkit authentication agent.",
@@ -728,7 +761,7 @@
         "System",
         "Security"
       ],
-      "lastUpdated": "2026-03-06T15:31:13+01:00"
+      "lastUpdated": "2026-03-18T22:34:03+01:00"
     },
     {
       "id": "pomodoro",
@@ -1067,6 +1100,22 @@
         "Bar"
       ],
       "lastUpdated": "2026-03-15T10:09:13-04:00"
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Rigelyon",
+      "description": "Search the Internet from the Launcher.",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "3.9.0",
+      "license": "MIT",
+      "tags": [
+        "Launcher",
+        "Utility"
+      ],
+      "lastUpdated": "2026-03-17T09:56:15+07:00"
     },
     {
       "id": "weekly-calendar",
