@@ -64,11 +64,11 @@ DraggableDesktopWidget {
     // --- UI Layout ---
 Rectangle {
     anchors.fill: parent
-    // If Color.mSurface is undefined, it defaults to a hex string
-    color: (Color && Color.mSurface) ? Color.mSurface : "#242424" 
+    
+    color: (Color && Color.mSurface) 
     opacity: 0.85
-    radius: Style.radiusM ?? 8 // Fallback for Style too
-    border.color: (Color && Color.mOutlineVariant) ? Color.mOutlineVariant : "#444444"
+    radius: Style.radiusM 
+    border.color: (Color && Color.mOutlineVariant) 
     border.width: 1
 
         ColumnLayout {
@@ -83,7 +83,7 @@ Rectangle {
 
                 // Row 1: Distribution
                 NText { 
-                    text: pluginApi?.tr("widget.distribution") ?? "Distribution"
+                    text: pluginApi?.tr("widget.distribution") 
                     color: Color.mOnSurfaceVariant
                     font.pointSize: 11 
                 }
@@ -98,7 +98,7 @@ Rectangle {
 
                 // Row 2: Kernel
                 NText { 
-                    text: pluginApi?.tr("widget.kernel") ?? "Kernel"
+                    text: pluginApi?.tr("widget.kernel") 
                     color: Color.mOnSurfaceVariant
                     font.pointSize: 11
                 }
@@ -115,7 +115,7 @@ Rectangle {
 
                 // Row 3: Uptime
                 NText { 
-                    text: pluginApi?.tr("widget.uptime") ?? "Uptime"
+                    text: pluginApi?.tr("widget.uptime") 
                     color: Color.mOnSurfaceVariant
                     font.pointSize: 11
                 }
