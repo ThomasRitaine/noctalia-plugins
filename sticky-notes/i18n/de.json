@@ -1,0 +1,34 @@
+{
+  "widget": {
+    "tooltip": "Sticky Notes"
+  },
+  "menu": {
+    "settings": "Widget Einstellungen"
+  },
+  "time": {
+    "just-now": "Gerade eben",
+    "minutes-ago": "vor {n}m",
+    "hours-ago": "vor {n}h",
+    "days-ago": "vor {n}d"
+  },
+  "notes": {
+    "new": "Neue Notiz",
+    "empty": "Noch keine Notizen",
+    "create-first": "Klicke auf + um deine erste Notiz zu erstellen",
+    "delete-confirm": "Diese Notiz löschen?",
+    "cancel": "Abbrechen"
+  },
+  "editor": {
+    "back": "Zurück zur Liste",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "placeholder": "Fang an, in Markdown zu schreiben...",
+    "hint": "Ctrl+Enter Speichern · Esc Abbrechen"
+  },
+  "settings": {
+    "notesDir": {
+      "label": "Verzeichnis der Notizen",
+      "desc": "Pfad zu dem Ordner, in dem die Notizen gespeichert sind."
+    }
+  }
+}
