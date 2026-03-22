@@ -13,7 +13,7 @@ Rectangle {
   signal saveClicked(string content, string editedColor)
   signal cancelClicked()
 
-  width: parent ? parent.width : 200
+  width: parent ? parent.width : 200 * Style.uiScaleRatio
   height: 200 * Style.uiScaleRatio
   color: noteColor
   radius: Style.radiusM
@@ -28,7 +28,7 @@ Rectangle {
     anchors.right: parent.right
     anchors.margins: Style.marginXS
     icon: "check"
-    baseSize: 28
+    baseSize: 28 * Style.uiScaleRatio
     customRadius: Style.radiusS
     colorBg: Qt.rgba(0, 0, 0, 0.06)
     colorBgHover: Qt.rgba(0, 0, 0, 0.12)

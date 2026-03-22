@@ -163,7 +163,7 @@ Rectangle {
 
           NIconButton {
             icon: "arrow-up-left"
-            baseSize: 28
+            baseSize: 28 * Style.uiScaleRatio
             customRadius: 100
             colorBg: Qt.rgba(0, 0, 0, 0.06)
             colorBgHover: Qt.rgba(0, 0, 0, 0.12)
@@ -178,7 +178,7 @@ Rectangle {
           NIconButton {
             id: copyBtn
             icon: "copy"
-            baseSize: 28
+            baseSize: 28 * Style.uiScaleRatio
             customRadius: 100
             colorBg: Qt.rgba(0, 0, 0, 0.06)
             colorBgHover: Qt.rgba(0, 0, 0, 0.12)
@@ -205,7 +205,7 @@ Rectangle {
 
           NIconButton {
             icon: "pencil"
-            baseSize: 28
+            baseSize: 28 * Style.uiScaleRatio
             customRadius: 100
             colorBg: Qt.rgba(0, 0, 0, 0.06)
             colorBgHover: Qt.rgba(0, 0, 0, 0.12)
@@ -219,7 +219,7 @@ Rectangle {
 
           NIconButton {
             icon: "trash"
-            baseSize: 28
+            baseSize: 28 * Style.uiScaleRatio
             customRadius: 100
             colorBg: Qt.rgba(0, 0, 0, 0.06)
             colorBgHover: Qt.rgba(0.8, 0, 0, 0.15)
@@ -303,7 +303,7 @@ Rectangle {
       anchors.right: parent.right
       anchors.margins: Style.marginXS
       icon: "check"
-      baseSize: 28
+      baseSize: 28 * Style.uiScaleRatio
       customRadius: Style.radiusS
       colorBg: Qt.rgba(0, 0, 0, 0.06)
       colorBgHover: Qt.rgba(0, 0, 0, 0.12)

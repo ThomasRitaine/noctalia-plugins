@@ -73,7 +73,7 @@ Item {
 
         NIconButton {
           icon: root.editing ? "check" : "pencil"
-          baseSize: 34
+          baseSize: 34 * Style.uiScaleRatio
           customRadius: 100
           colorBg: Qt.rgba(0, 0, 0, 0.06)
           colorBgHover: Qt.rgba(0, 0, 0, 0.12)
@@ -93,7 +93,7 @@ Item {
 
         NIconButton {
           icon: "arrow-down-right"
-          baseSize: 34
+          baseSize: 34 * Style.uiScaleRatio
           customRadius: 100
           colorBg: Qt.rgba(0, 0, 0, 0.06)
           colorBgHover: Qt.rgba(0, 0, 0, 0.12)
