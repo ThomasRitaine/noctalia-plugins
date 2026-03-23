@@ -86,7 +86,7 @@
     {
       "id": "calendar-widget",
       "name": "Desktop Calendar",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "official": false,
       "author": "Simon",
       "description": "Monthly calendar with today highlighted.",
@@ -97,7 +97,7 @@
         "Desktop",
         "Utility"
       ],
-      "lastUpdated": "2026-03-20T20:37:22+01:00"
+      "lastUpdated": "2026-03-22T07:33:17+01:00"
     },
     {
       "id": "calibre-provider",
@@ -1038,6 +1038,22 @@
         "Productivity"
       ],
       "lastUpdated": "2026-02-23T15:20:02+08:00"
+    },
+    {
+      "id": "sys-info-widget",
+      "name": "System Info",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Simon",
+      "description": "Shows Distribution, Kernel, and Uptime.",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "4.6.6",
+      "license": "MIT",
+      "tags": [
+        "Desktop",
+        "System"
+      ],
+      "lastUpdated": "2026-03-20T08:10:28+01:00"
     },
     {
       "id": "tailscale",
