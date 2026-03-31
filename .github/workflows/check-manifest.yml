@@ -77,6 +77,8 @@ jobs:
           }
 
           # Required Properties in Components
+          inManifest=false
+
           hasId=false
           hasName=false
           hasVersion=false
@@ -85,6 +87,8 @@ jobs:
           hasRepository=false
 
           function reset_required_properties() {
+            inManifest=false
+
             hasId=false
             hasName=false
             hasVersion=false
@@ -94,29 +98,31 @@ jobs:
           }
 
           function print_required_properties() {
-            if [ "$hasId" = false ]; then
-              print_missing_property "$h_priority" 'id' '"id": "my-plugin"'
-              issues=$((issues + 1))
-            fi
-            if [ "$hasName" = false ]; then
-              print_missing_property "$h_priority" 'name' '"name": "My Awesome Plugin"'
-              issues=$((issues + 1))
-            fi
-            if [ "$hasVersion" = false ]; then
-              print_missing_property "$h_priority" 'version' '"version": "1.2.3"'
-              issues=$((issues + 1))
-            fi
-            if [ "$hasAuthor" = false ]; then
-              print_missing_property "$h_priority" 'author' '"author": "John Doe"'
-              issues=$((issues + 1))
-            fi
-            if [ "$hasDescription" = false ]; then
-              print_missing_property "$h_priority" 'description' '"description": "A very awesome plugin that does this and that!"'
-              issues=$((issues + 1))
-            fi
-            if [ "$hasRepository" = false ]; then
-              print_missing_property "$h_priority" 'repository' '"repository": "https://github.com/noctalia-dev/noctalia-plugins"'
-              issues=$((issues + 1))
+            if [ "$inManifest" = true ]; then
+              if [ "$hasId" = false ]; then
+                print_missing_property "$h_priority" 'id' '"id": "my-plugin"'
+                issues=$((issues + 1))
+              fi
+              if [ "$hasName" = false ]; then
+                print_missing_property "$h_priority" 'name' '"name": "My Awesome Plugin"'
+                issues=$((issues + 1))
+              fi
+              if [ "$hasVersion" = false ]; then
+                print_missing_property "$h_priority" 'version' '"version": "1.2.3"'
+                issues=$((issues + 1))
+              fi
+              if [ "$hasAuthor" = false ]; then
+                print_missing_property "$h_priority" 'author' '"author": "John Doe"'
+                issues=$((issues + 1))
+              fi
+              if [ "$hasDescription" = false ]; then
+                print_missing_property "$h_priority" 'description' '"description": "A very awesome plugin that does this and that!"'
+                issues=$((issues + 1))
+              fi
+              if [ "$hasRepository" = false ]; then
+                print_missing_property "$h_priority" 'repository' '"repository": "https://github.com/noctalia-dev/noctalia-plugins"'
+                issues=$((issues + 1))
+              fi
             fi
           }
 
@@ -128,8 +134,12 @@ jobs:
               reset_required_properties
 
               title_added=false
-              file_title=$(printf -- '\n### File: %s' "$(echo "$line" | sed 's/diff --git a\/\(.*/manifest\.json\) .*/\1/g')")
+              file_title=$(printf -- '\n### File: %s' "$(echo "$line" | sed 's/diff --git a\/\(.*\) .*/\1/g')")
               echo "Checking file: $file_title"
+
+              if [[ "$file_title" == *manifest.json ]]; then
+                inManifest=true
+              fi
             elif echo "$line" | grep -E "^@@" >/dev/null; then
               line_index=$(echo "$line" | grep -oE "\+[0-9]+" | grep -oE "[0-9]+")
               echo "Current line index reset: $line_index"
