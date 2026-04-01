@@ -116,7 +116,7 @@ Item {
         oppositeDirection: BarService.getPillDirection(root)
         forceClose: true
         
-        icon: "calendar"
+        icon: "calendar-week"
         tooltipText: tooltipContent
         
         onClicked: root.pluginApi?.openPanel(root.screen)
