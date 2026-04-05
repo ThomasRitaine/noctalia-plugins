@@ -17,18 +17,10 @@ Item {
     readonly property string colorWarning:     cfg.colorWarning     ?? defaults.colorWarning     ?? "tertiary"
     readonly property string colorCritical:    cfg.colorCritical    ?? defaults.colorCritical    ?? "error"
 
-    readonly property string hostsJson: cfg.hosts ?? defaults.hosts ?? "[]"
-
-    readonly property var hostsCfg: {
-        try {
-            const parsed = JSON.parse(hostsJson)
-            if (Array.isArray(parsed) && parsed.length > 0) return parsed
-        } catch(e) { Logger.w("LatencyMonitor", "Failed to parse hosts JSON:", e.message) }
-        return [
-            { name: "Cloudflare", address: "1.1.1.1" },
-            { name: "Google",     address: "8.8.8.8"  }
-        ]
-    }
+    readonly property var hostsCfg: cfg.hosts ?? defaults.hosts ?? [
+        { name: "Cloudflare", address: "1.1.1.1" },
+        { name: "Google",     address: "8.8.8.8"  }
+    ]
 
     property var hosts: []
 

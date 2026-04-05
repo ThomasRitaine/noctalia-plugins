@@ -23,7 +23,16 @@
   },
   "metadata": {
     "defaultSettings": {
-      "hosts": "[{\"name\":\"Cloudflare DNS\",\"address\":\"1.1.1.1\"},{\"name\":\"Google DNS\",\"address\":\"8.8.8.8\"}]",
+      "hosts": [
+        {
+          "name": "Cloudflare DNS",
+          "address": "1.1.1.1"
+        },
+        {
+          "name": "Google DNS",
+          "address": "8.8.8.8"
+        }
+      ],
       "intervalSeconds": 5,
       "thresholdGood": 20,
       "thresholdWarning": 70,

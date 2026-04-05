@@ -139,10 +139,10 @@ Item {
 
                 Repeater {
                     model: [
-                        { labelKey: "panel.timings.10m", avg: root._host?.avg10m  ?? -1 },
-                        { labelKey: "panel.timings.30m", avg: root._host?.avg30m  ?? -1 },
-                        { labelKey: "panel.timings.1h",  avg: root._host?.avg60m  ?? -1 },
-                        { labelKey: "panel.timings.last",avg: root._host?.lastRtt ?? -1 },
+                        { labelKey: "panel.timings.10m",  avg: root._host?.avg10m  ?? -1 },
+                        { labelKey: "panel.timings.30m",  avg: root._host?.avg30m  ?? -1 },
+                        { labelKey: "panel.timings.1h",   avg: root._host?.avg60m  ?? -1 },
+                        { labelKey: "panel.timings.last", avg: root._host?.lastRtt ?? -1 },
                     ]
 
                     delegate: Rectangle {
@@ -172,7 +172,7 @@ Item {
                                 Layout.alignment: Qt.AlignHCenter
                             }
                             NText {
-                                text:      pluginApi?.tr(modelData.labelKey)
+                                text:      pluginApi?.tr(modelData?.labelKey)
                                 pointSize: Style.fontSizeXS
                                 color:     Color.mSecondary
                                 Layout.alignment: Qt.AlignHCenter

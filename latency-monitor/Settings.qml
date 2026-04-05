@@ -18,33 +18,7 @@ ColumnLayout {
     property string valueColorGood:        cfg.colorGood        ?? defaults.colorGood        ?? "primary"
     property string valueColorWarning:     cfg.colorWarning     ?? defaults.colorWarning     ?? "tertiary"
     property string valueColorCritical:    cfg.colorCritical    ?? defaults.colorCritical    ?? "error"
-
-    ListModel { id: hostModel }
-
-    property bool _hostsLoaded: false
-
-    function _loadHosts() {
-        if (_hostsLoaded) return
-        hostModel.clear()
-        try {
-            const raw  = cfg.hosts ?? defaults.hosts ?? "[]"
-            const arr  = typeof raw === "string" ? JSON.parse(raw) : raw
-            for (const h of arr) hostModel.append({ hname: h.name, haddress: h.address })
-        } catch(e) {
-            hostModel.append({ hname: "Cloudflare", haddress: "1.1.1.1" })
-            hostModel.append({ hname: "Google",     haddress: "8.8.8.8"  })
-        }
-        _hostsLoaded = true
-    }
-
-    function _hostsToJson() {
-        const arr = []
-        for (let i = 0; i < hostModel.count; i++)
-            arr.push({ name: hostModel.get(i).hname, address: hostModel.get(i).haddress })
-        return JSON.stringify(arr)
-    }
-
-    Component.onCompleted: _loadHosts()
+    property var    valueHosts:            cfg.hosts            ?? defaults.hosts            ?? []
 
     spacing: Style.marginL
 
@@ -54,39 +28,49 @@ ColumnLayout {
     }
 
     Repeater {
-        model: hostModel
+        model: valueHosts
 
         delegate: RowLayout {
+            required property var    modelData
+            required property int    index
             Layout.fillWidth: true
             spacing: Style.marginS
-
-            required property int    index
-            required property string hname
-            required property string haddress
 
             NTextInput {
                 Layout.preferredWidth: 120 * Style.uiScaleRatio
                 label:           index === 0 ? pluginApi?.tr("settings.hosts.name") : ""
                 placeholderText: "Name"
-                text:            hname
-                onTextChanged:   hostModel.setProperty(index, "hname", text)
+                text:            modelData.name
+                onEditingFinished: {
+                    const arr = root.valueHosts.slice()
+                    arr[index] = { name: text, address: arr[index].address }
+                    root.valueHosts = arr
+                }
             }
 
             NTextInput {
                 Layout.fillWidth: true
                 label:           index === 0 ? pluginApi?.tr("settings.hosts.address") : ""
                 placeholderText: "IP / hostname"
-                text:            haddress
-                onTextChanged:   hostModel.setProperty(index, "haddress", text)
+                text:            modelData.address
+                onEditingFinished: {
+                    const arr = root.valueHosts.slice()
+                    arr[index] = { name: arr[index].name, address: text }
+                    root.valueHosts = arr
+                }
             }
 
             NIconButton {
-                Layout.alignment:  Qt.AlignBottom
+                Layout.alignment:    Qt.AlignBottom
                 Layout.bottomMargin: Style.marginS
                 icon:        "trash"
                 tooltipText: pluginApi?.tr("settings.hosts.remove")
-                enabled:     hostModel.count > 1
-                onClicked:   hostModel.remove(index)
+                enabled:     root.valueHosts.length > 1
+                onClicked: {
+                    const arr = root.valueHosts.slice()
+                    arr.splice(index, 1)
+                    root.valueHosts = arr
+                }
             }
         }
     }
@@ -95,33 +79,28 @@ ColumnLayout {
         Layout.fillWidth: true
         spacing: Style.marginS
 
-        property string _name:    ""
-        property string _address: ""
-
         NTextInput {
             id:              addNameField
             Layout.preferredWidth: 120 * Style.uiScaleRatio
             placeholderText: pluginApi?.tr("settings.hosts.namePlaceholder")
-            onTextChanged:   parent._name = text
         }
 
         NTextInput {
             id:              addAddrField
             Layout.fillWidth: true
             placeholderText: pluginApi?.tr("settings.hosts.addressPlaceholder")
-            onTextChanged:   parent._address = text
         }
 
         NIconButton {
-            Layout.alignment:  Qt.AlignBottom
+            Layout.alignment:    Qt.AlignBottom
             Layout.bottomMargin: Style.marginS
             icon:        "plus"
             tooltipText: pluginApi?.tr("settings.hosts.add")
-            enabled:     parent._name.trim() !== "" && parent._address.trim() !== ""
+            enabled:     addNameField.text.trim() !== "" && addAddrField.text.trim() !== ""
             onClicked: {
-                hostModel.append({ hname: parent._name.trim(), haddress: parent._address.trim() })
-                addNameField.text = ""; addAddrField.text = ""
-                parent._name = ""; parent._address = ""
+                root.valueHosts = root.valueHosts.concat([{ name: addNameField.text.trim(), address: addAddrField.text.trim() }])
+                addNameField.text = ""
+                addAddrField.text = ""
             }
         }
     }
@@ -133,8 +112,8 @@ ColumnLayout {
         currentKey: root.valueBarHost
         model: {
             const base = [{ key: "worst", name: pluginApi?.tr("settings.barHost.worst") }]
-            for (let i = 0; i < hostModel.count; i++)
-                base.push({ key: hostModel.get(i).hname, name: hostModel.get(i).hname })
+            for (const h of root.valueHosts)
+                base.push({ key: h.name, name: h.name })
             return base
         }
         onSelected: key => root.valueBarHost = key
@@ -247,7 +226,7 @@ ColumnLayout {
 
     function saveSettings() {
         if (!pluginApi) return
-        pluginApi.pluginSettings.hosts            = root._hostsToJson()
+        pluginApi.pluginSettings.hosts            = root.valueHosts
         pluginApi.pluginSettings.intervalSeconds  = root.valueIntervalSeconds
         pluginApi.pluginSettings.thresholdGood    = root.valueThresholdGood
         pluginApi.pluginSettings.thresholdWarning = root.valueThresholdWarning
