@@ -39,13 +39,17 @@ Item {
 
     readonly property var _currentRtts: _currentSamples.map(s => s.rtt)
 
-    function statusColor(icon) {
-        switch(icon) {
-            case "good":    return Color.mPrimary
-            case "warning": return Color.mTertiary
-            case "critical":return Color.mError
-            default:        return Color.mOnSurface
+    function _colorizeStatus(status) {
+        switch(status) {
+            case "good":     return mainInstance?.colorGood
+            case "warning":  return mainInstance?.colorWarning
+            case "critical": return mainInstance?.colorCritical
+            default:         return "onSurface"
         }
+    }
+
+    function statusColor(status) {
+        return Color.resolveColorKey(_colorizeStatus(status))
     }
 
     function rttColor(rtt) {
@@ -216,14 +220,7 @@ Item {
                         fill:           true
                         updateInterval: (mainInstance?.intervalSeconds ?? 5) * 1000
 
-                        color: {
-                            switch(root._host?.status ?? "unknown") {
-                                case "good":    return Color.resolveColorKey(mainInstance?.colorGood     ?? "primary")
-                                case "warning": return Color.resolveColorKey(mainInstance?.colorWarning  ?? "tertiary")
-                                case "critical":return Color.resolveColorKey(mainInstance?.colorCritical ?? "error")
-                                default:        return Color.mOnSurface
-                            }
-                        }
+                        color: root.statusColor(root._host?.status ?? "unknown")
                     }
 
                     Repeater {
@@ -347,33 +344,45 @@ Item {
                 }
             }
 
-            RowLayout {
+            NDivider { Layout.fillWidth: true; opacity: 0.4 }
+            Repeater {
+              model: hosts
+
+              delegate: RowLayout {
+                required property int index
+                required property var modelData
+
                 Layout.fillWidth: true
 
                 NText {
-                    text:      root._host ? root._host.address : ""
+                    text:      modelData.name
                     pointSize: Style.fontSizeXS
+                    color:     Color.mSecondary
+                }
+                NText {
+                    text:      modelData.address
+                    pointSize: Style.fontSizeXXS
                     color:     Color.mSecondary
                     opacity:   0.6
                 }
                 Item { Layout.fillWidth: true }
                 Rectangle {
-                    visible:      root._host?.timedOut ?? false
                     implicitWidth:  timeoutLabel.implicitWidth + Style.marginM * 2
                     implicitHeight: timeoutLabel.implicitHeight + Style.marginXS * 2
                     radius:       Style.radiusS
                     color:        Qt.alpha(Color.mError, 0.12)
-                    border.color: Color.mError
+                    border.color: root.statusColor(modelData.status)
                     border.width: Style.marginXXS
 
                     NText {
                         id:        timeoutLabel
                         anchors.centerIn: parent
-                        text:      pluginApi?.tr("widget.timedOut")
+                        text:      `${modelData.lastRtt}ms`
                         pointSize: Style.fontSizeXS
-                        color:     Color.mError
+                        color:     root.statusColor(modelData.status)
                     }
                 }
+              }
             }
         }
     }
