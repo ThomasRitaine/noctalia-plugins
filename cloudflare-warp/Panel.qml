@@ -100,7 +100,7 @@ Item {
             Layout.preferredHeight: notInstalledLayout.implicitHeight + Style.marginM * 2
             color: Qt.alpha(Color.mError, 0.1)
             radius: Style.radiusM
-            border.width: 1
+            border.width: Style.borderS
             border.color: Qt.alpha(Color.mError, 0.3)
 
             RowLayout {

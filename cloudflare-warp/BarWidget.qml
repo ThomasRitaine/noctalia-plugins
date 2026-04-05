@@ -81,7 +81,7 @@ Item {
           anchors.centerIn: parent
           width: parent.width * 1.1
           height: 2
-          radius: 1
+          radius: Style.radiusXXXS
           color: root.resolvedIconColor
           opacity: 0.9
           rotation: -45

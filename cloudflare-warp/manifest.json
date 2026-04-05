@@ -5,7 +5,7 @@
   "minNoctaliaVersion": "4.0.0",
   "author": "ToRvaLDz",
   "license": "MIT",
-  "repository": "https://github.com/ToRvaLDz/noctalia-cloudflare",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
   "description": "Toggle Cloudflare WARP from the bar. Shows connection status and mode.",
   "tags": [
     "Bar",
