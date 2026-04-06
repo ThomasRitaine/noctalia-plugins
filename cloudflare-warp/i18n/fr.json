@@ -20,7 +20,7 @@
     "description": "Activer et désactiver Cloudflare WARP depuis la barre et personnalisez son apparence.",
     "connected-color": "Couleur connecté",
     "connected-color-desc": "Couleur de l'icône lorsque WARP est connecté",
-    "disconnected-color": "Couleur déconnecté",
+    "disconnected-color": "Couleur déconnectée",
     "disconnected-color-desc": "Couleur de l'icône lorsque WARP est déconnecté",
     "refresh-interval": "Intervalle de rafraîchissement",
     "refresh-interval-desc": "Fréquence d'interrogation de warp-cli pour l'état"
