@@ -1015,43 +1015,56 @@ Item {
                     }
 
                     RowLayout {
-                    Layout.fillWidth: true
+                      Layout.fillWidth: true
 
-                    NText {
-                      text: pluginApi?.tr("panel.infoType")
-                      color: Color.mOnSurfaceVariant
-                    }
+                      NText {
+                        text: pluginApi?.tr("panel.infoType")
+                        color: Color.mOnSurfaceVariant
+                      }
 
-                    Item { Layout.fillWidth: true }
+                      Item { Layout.fillWidth: true }
 
-                    NText {
-                      text: root.selectedWallpaperData ? root.typeLabel(root.selectedWallpaperData.type) : ""
-                      color: Color.mOnSurface
-                    }
-                    }
-
-                    RowLayout {
-                    Layout.fillWidth: true
-
-                    NText {
-                      text: pluginApi?.tr("panel.infoId")
-                      color: Color.mOnSurfaceVariant
-                    }
-
-                    Item { Layout.fillWidth: true }
-
-                    NText {
-                      text: root.selectedWallpaperData ? root.selectedWallpaperData.id : ""
-                      color: Color.mOnSurface
-                      elide: Text.ElideMiddle
-                    }
+                      NText {
+                        text: root.selectedWallpaperData ? root.typeLabel(root.selectedWallpaperData.type) : ""
+                        color: Color.mOnSurface
+                      }
                     }
 
                     RowLayout {
-                    Layout.fillWidth: true
+                      Layout.fillWidth: true
 
-                    NText {
-                      text: pluginApi?.tr("panel.infoResolution")
+                      NText {
+                        text: root.selectedWallpaperData
+                          ? (String(root.selectedWallpaperData.resolution || "unknown") === "unknown"
+                            ? pluginApi?.tr("panel.resolutionUnknown")
+                            : root.selectedWallpaperData.resolution)
+                          : ""
+                        color: Color.mOnSurface
+                      }
+                    }
+
+                    RowLayout {
+                      Layout.fillWidth: true
+
+                      NText {
+                        text: pluginApi?.tr("panel.infoSize")
+                        color: Color.mOnSurfaceVariant
+                      }
+
+                      Item { Layout.fillWidth: true }
+
+                      NText {
+                        text: root.selectedWallpaperData ? root.selectedWallpaperData.id : ""
+                        color: Color.mOnSurface
+                        elide: Text.ElideMiddle
+                      }
+                    }
+
+                    RowLayout {
+                      Layout.fillWidth: true
+
+                      NText {
+                        text: pluginApi?.tr("panel.infoResolution")
                       color: Color.mOnSurfaceVariant
                     }
 
@@ -1068,19 +1081,19 @@ Item {
                     }
 
                     RowLayout {
-                    Layout.fillWidth: true
+                      Layout.fillWidth: true
 
-                    NText {
-                      text: pluginApi?.tr("panel.infoSize")
-                      color: Color.mOnSurfaceVariant
-                    }
+                      NText {
+                        text: pluginApi?.tr("panel.infoSize")
+                        color: Color.mOnSurfaceVariant
+                      }
 
-                    Item { Layout.fillWidth: true }
+                      Item { Layout.fillWidth: true }
 
-                    NText {
-                      text: root.selectedWallpaperData ? root.formatBytes(root.selectedWallpaperData.bytes) : ""
-                      color: Color.mOnSurface
-                    }
+                      NText {
+                        text: root.selectedWallpaperData ? root.formatBytes(root.selectedWallpaperData.bytes) : ""
+                        color: Color.mOnSurface
+                      }
                     }
 
                     NDivider {
@@ -1097,34 +1110,34 @@ Item {
                     }
 
                     NComboBox {
-                    Layout.fillWidth: true
-                    label: pluginApi?.tr("panel.wallpaperScaling")
-                    model: [
-                      { "key": "fill", "name": pluginApi?.tr("panel.scalingFill") },
-                      { "key": "fit", "name": pluginApi?.tr("panel.scalingFit") },
-                      { "key": "stretch", "name": pluginApi?.tr("panel.scalingStretch") },
-                      { "key": "default", "name": pluginApi?.tr("panel.scalingDefault") }
-                    ]
-                    currentKey: root.selectedScaling
-                    onSelected: key => root.selectedScaling = key
+                      Layout.fillWidth: true
+                      label: pluginApi?.tr("panel.wallpaperScaling")
+                      model: [
+                        { "key": "fill", "name": pluginApi?.tr("panel.scalingFill") },
+                        { "key": "fit", "name": pluginApi?.tr("panel.scalingFit") },
+                        { "key": "stretch", "name": pluginApi?.tr("panel.scalingStretch") },
+                        { "key": "default", "name": pluginApi?.tr("panel.scalingDefault") }
+                      ]
+                      currentKey: root.selectedScaling
+                      onSelected: key => root.selectedScaling = key
                     }
 
                     NSpinBox {
-                    Layout.fillWidth: true
-                    label: pluginApi?.tr("panel.wallpaperVolume")
-                    from: 0
-                    to: 100
-                    suffix: " %"
-                    value: root.selectedVolume
-                    enabled: !root.selectedMuted
-                    onValueChanged: root.selectedVolume = value
+                      Layout.fillWidth: true
+                      label: pluginApi?.tr("panel.wallpaperVolume")
+                      from: 0
+                      to: 100
+                      suffix: " %"
+                      value: root.selectedVolume
+                      enabled: !root.selectedMuted
+                      onValueChanged: root.selectedVolume = value
                     }
 
                     NToggle {
-                    Layout.fillWidth: true
-                    label: pluginApi?.tr("panel.wallpaperMuted")
-                    checked: root.selectedMuted
-                    onToggled: checked => root.selectedMuted = checked
+                      Layout.fillWidth: true
+                      label: pluginApi?.tr("panel.wallpaperMuted")
+                      checked: root.selectedMuted
+                      onToggled: checked => root.selectedMuted = checked
                     }
 
                     NDivider {
@@ -1141,31 +1154,31 @@ Item {
                     }
 
                     NToggle {
-                    Layout.fillWidth: true
-                    label: pluginApi?.tr("panel.wallpaperAudioReactive")
-                    checked: root.selectedAudioReactiveEffects
-                    onToggled: checked => root.selectedAudioReactiveEffects = checked
+                      Layout.fillWidth: true
+                      label: pluginApi?.tr("panel.wallpaperAudioReactive")
+                      checked: root.selectedAudioReactiveEffects
+                      onToggled: checked => root.selectedAudioReactiveEffects = checked
                     }
 
                     NToggle {
-                    Layout.fillWidth: true
-                    label: pluginApi?.tr("panel.wallpaperDisableMouse")
-                    checked: root.selectedDisableMouse
-                    onToggled: checked => root.selectedDisableMouse = checked
+                      Layout.fillWidth: true
+                      label: pluginApi?.tr("panel.wallpaperDisableMouse")
+                      checked: root.selectedDisableMouse
+                      onToggled: checked => root.selectedDisableMouse = checked
                     }
 
                     NToggle {
-                    Layout.fillWidth: true
-                    label: pluginApi?.tr("panel.wallpaperDisableParallax")
-                    checked: root.selectedDisableParallax
-                    onToggled: checked => root.selectedDisableParallax = checked
+                      Layout.fillWidth: true
+                      label: pluginApi?.tr("panel.wallpaperDisableParallax")
+                      checked: root.selectedDisableParallax
+                      onToggled: checked => root.selectedDisableParallax = checked
                     }
 
                     NText {
-                    Layout.fillWidth: true
-                    text: pluginApi?.tr("panel.pendingHint")
-                    color: Color.mOnSurfaceVariant
-                    wrapMode: Text.Wrap
+                      Layout.fillWidth: true
+                      text: pluginApi?.tr("panel.pendingHint")
+                      color: Color.mOnSurfaceVariant
+                      wrapMode: Text.Wrap
                     }
 
                     NButton {
@@ -1177,10 +1190,10 @@ Item {
                     }
 
                     NButton {
-                    Layout.fillWidth: true
-                    text: pluginApi?.tr("panel.resetWallpaperSettings")
-                    icon: "refresh"
-                    onClicked: root.resetPendingToGlobalDefaults()
+                      Layout.fillWidth: true
+                      text: pluginApi?.tr("panel.resetWallpaperSettings")
+                      icon: "refresh"
+                      onClicked: root.resetPendingToGlobalDefaults()
                     }
                   }
                 }
