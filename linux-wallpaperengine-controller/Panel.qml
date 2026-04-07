@@ -1248,7 +1248,7 @@ Item {
 
       delegate: Rectangle {
         required property var modelData
-        width: NListView.view.width
+        width: filterList.width
         height: 34 * Style.uiScaleRatio
         radius: Style.radiusM
         color: modelData.selected ? Qt.alpha(Color.mPrimary, 0.22) : "transparent"
@@ -1307,7 +1307,7 @@ Item {
 
       delegate: Rectangle {
         required property var modelData
-        width: NListView.view.width
+        width: sortList.width
         height: 34 * Style.uiScaleRatio
         radius: Style.radiusM
         color: modelData.selected ? Qt.alpha(Color.mPrimary, 0.22) : "transparent"
