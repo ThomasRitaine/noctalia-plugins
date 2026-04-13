@@ -972,6 +972,22 @@
       "lastUpdated": "2026-02-23T20:48:07-05:00"
     },
     {
+      "id": "not-just-text",
+      "name": "Not Just Text",
+      "version": "1.0.1",
+      "official": false,
+      "author": "blackteaextract",
+      "description": "Displays custom text, fortune quotes, or a random entry from a user-provided text file in the bar.",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "4.4.1",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Fun"
+      ],
+      "lastUpdated": "2026-04-13T22:31:42Z"
+    },
+    {
       "id": "notes-scratchpad",
       "name": "Notes Scratchpad",
       "version": "1.1.6",
@@ -1354,7 +1370,7 @@
     {
       "id": "ssh-sessions",
       "name": "SSH Sessions",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "official": false,
       "author": "adriamartin91",
       "description": "Manage SSH connections from ~/.ssh/config with active session detection and launcher integration.",
@@ -1368,7 +1384,7 @@
         "Utility",
         "Development"
       ],
-      "lastUpdated": "2026-04-08T20:26:40+02:00"
+      "lastUpdated": "2026-04-13T20:17:59+02:00"
     },
     {
       "id": "steam-price-watcher",
@@ -1421,7 +1437,7 @@
     {
       "id": "sys-info-widget",
       "name": "System Info",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "official": false,
       "author": "Simon",
       "description": "Shows Distribution, Kernel, Uptime and IP addresses.",
@@ -1432,7 +1448,7 @@
         "Desktop",
         "System"
       ],
-      "lastUpdated": "2026-04-08T12:37:22+02:00"
+      "lastUpdated": "2026-04-13T19:54:20+02:00"
     },
     {
       "id": "tailscale",
